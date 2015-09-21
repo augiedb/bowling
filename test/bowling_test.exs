@@ -40,9 +40,13 @@ defmodule BowlingTest do
 
   test "Perfect Game" do
    scoreboard = ['X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X']
-    assert Bowling.final_score(scoreboard) == 300
+   assert Bowling.final_score(scoreboard) == 300
    scoreboard = ['X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 9, '/']
-    assert Bowling.final_score(scoreboard) == 289
+   assert Bowling.final_score(scoreboard) == 289
+   scoreboard = ['X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 1, 1]
+   assert Bowling.final_score(scoreboard) == 273
+   scoreboard = ['X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 0, 1]
+   assert Bowling.final_score(scoreboard) == 271
 
   # TEST TEMPORARY:
    #  assert Bowling.do_final_score(scoreboard, 0, 1) == 30 

@@ -19,7 +19,6 @@ defmodule Bowling do
   def do_final_score(line, score, frame) do
     [this_frame, new_line] = line |> get_frame
     new_score = get_score([this_frame, new_line ])
-IO.puts 'FRAME! #{frame}'
     do_final_score(new_line, new_score + score, frame + 1)
   end
 
