@@ -26,4 +26,17 @@ defmodule BowlingTest do
     assert Bowling.get_score({1,7}) == 8 
   end
 
+  test "Get Score for Spare Frame" do
+    assert Bowling.get_score({9, '/'}, [1,1,2,2,3,3]) == 11
+    assert Bowling.get_score({9, '/'}, ['X', 1, 1, 2, 2, 3, 3]) == 20
+  end
+
+  test "Get Score for Strike Frame" do
+    assert Bowling.get_score({'X'}, [1,1,2,2,3,3]) == 12
+    assert Bowling.get_score({'X'}, [9, '/', 1, 1]) == 20
+    assert Bowling.get_score({'X'}, ['X', 9, '/', 1, 1]) == 29
+    assert Bowling.get_score({'X'}, ['X', 'X', 9, '/', 1, 1]) == 30
+
+  end
+
 end
