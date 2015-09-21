@@ -21,4 +21,9 @@ defmodule BowlingTest do
     assert Bowling.get_next_frame([9, '/',1,1,2,2,3,3]) == {9, '/'}
   end
 
+  test "Get Score for Frame" do
+    assert Bowling.get_score({0,0}) == 0
+    assert Bowling.get_score({1,7}) == 8 
+  end
+
 end

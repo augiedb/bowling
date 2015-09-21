@@ -26,4 +26,8 @@ defmodule Bowling do
     {first, second}
   end
 
+  def get_score({first, second}) do
+    first + second
+  end
+
 end
