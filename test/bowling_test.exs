@@ -22,21 +22,31 @@ defmodule BowlingTest do
   end
 
   test "Get Score for Frame" do
-    assert Bowling.get_score({0,0}) == 0
-    assert Bowling.get_score({1,7}) == 8 
+    assert Bowling.get_score([{0,0}, [1,1,2,2,3,3,4,4]]) == 0
+    assert Bowling.get_score([{1,7}, [1,1,2,2,3,3,4,4]]) == 8 
   end
 
   test "Get Score for Spare Frame" do
-    assert Bowling.get_score({9, '/'}, [1,1,2,2,3,3]) == 11
-    assert Bowling.get_score({9, '/'}, ['X', 1, 1, 2, 2, 3, 3]) == 20
+    assert Bowling.get_score([{9, '/'}, [1,1,2,2,3,3]]) == 11
+    assert Bowling.get_score([{9, '/'}, ['X', 1, 1, 2, 2, 3, 3]]) == 20
   end
 
   test "Get Score for Strike Frame" do
-    assert Bowling.get_score({'X'}, [1,1,2,2,3,3]) == 12
-    assert Bowling.get_score({'X'}, [9, '/', 1, 1]) == 20
-    assert Bowling.get_score({'X'}, ['X', 9, '/', 1, 1]) == 29
-    assert Bowling.get_score({'X'}, ['X', 'X', 9, '/', 1, 1]) == 30
-
+    assert Bowling.get_score([{'X'}, [1,1,2,2,3,3]]) == 12
+    assert Bowling.get_score([{'X'}, [9, '/', 1, 1]]) == 20
+    assert Bowling.get_score([{'X'}, ['X', 9, '/', 1, 1]]) == 29
+    assert Bowling.get_score([{'X'}, ['X', 'X', 9, '/', 1, 1]]) == 30
   end
+
+  test "Perfect Game" do
+   scoreboard = ['X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X']
+    assert Bowling.final_score(scoreboard) == 300
+   scoreboard = ['X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 9, '/']
+    assert Bowling.final_score(scoreboard) == 289
+
+  # TEST TEMPORARY:
+   #  assert Bowling.do_final_score(scoreboard, 0, 1) == 30 
+  end
+
 
 end
